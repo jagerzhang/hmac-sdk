@@ -11,4 +11,7 @@ Hmac的认证方式，没用过的同学可能调试起来比较费时间，这�
 -  PHP
 -  Golang
 
+### 附加说明
+Python以外的Demo由jager的同事热心提供。
+
 Enjoy It！
