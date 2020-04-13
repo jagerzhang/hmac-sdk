@@ -21,7 +21,7 @@ func GetAuthHeader(username, secretkey string, body []byte) map[string]string {
     //生成body的sha256加密串
     bodyDigest := _sha256DigestBase64(body)
 
-    gmTime := time.Now().UTC().Format("Mon, 2 Jan 2006 15:04:05 GMT")
+    gmTime := time.Now().UTC().Format("Mon, 02 Jan 2006 15:04:05 GMT")
 
     //拼装待签名的数据
     strToSign := fmt.Sprintf("date: %s\ndigest: %s", gmTime, bodyDigest)
