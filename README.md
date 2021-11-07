@@ -7,7 +7,7 @@ Hmac的认证方式，没用过的同学可能调试起来比较费时间，这�
 | :------------ | ------------: | ------------: |
 | Python2+/3+ | Jager | [sample](python/sample.py) |
 | PHP  | Cal | [sample](php/sample.php) |
-| Golang | yorker | [sample](golang/sample.go) |
+| Golang | Yorker | [sample](golang/sample.go) |
 | C++  | Steven | [sample](c++/src/sample.cpp) |
 | JAVA  | Gavinx | [sample](java/Hmac-demo/src/main/java/com/sdk/hmac/Sample.java) |
 | Postman  | Jimgle | 无 |
