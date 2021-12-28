@@ -11,5 +11,6 @@ Hmac的认证方式，没用过的同学可能调试起来比较费时间，这�
 | C++  | Steven | [sample](c++/src/sample.cpp) |
 | JAVA  | Gavinx | [sample](java/Hmac-demo/src/main/java/com/sdk/hmac/Sample.java) |
 | Postman  | Jimgle | 无 |
+| Shell  | Jagerzhang | 无 |
 
 Enjoy It！

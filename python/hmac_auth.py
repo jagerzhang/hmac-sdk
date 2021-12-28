@@ -1,5 +1,5 @@
 # -*- coding: utf8 -*-
-__author__ = 'Jager'
+__author__ = 'Jagerzhang'
 import sys
 import hmac
 import hashlib
@@ -16,12 +16,13 @@ class HmacAuth():
     def __init__(self, hmac_user=None, hmac_secret=None):
         self.hmac_user = hmac_user
         self.hmac_secret = hmac_secret
+        self.python_version = sys.version_info[0]
 
     def _sha256_digest(self, content):
         """ sha256计算内容摘要
         :param content, String, 内容
         """
-        if sys.version_info.major > 2:
+        if self.python_version > 2:
             content_bytes = bytes(content, "utf-8")
 
         else:
@@ -30,7 +31,7 @@ class HmacAuth():
         content_sha256_digest = hashlib.sha256(content_bytes).digest()
         content_sha256_digest_base64_decode = base64.b64encode(
             content_sha256_digest).decode()
-        content_digest = 'SHA-256={}'.format(
+        content_digest = 'SHA-256={0}'.format(
             content_sha256_digest_base64_decode)
         return content_digest
 
@@ -39,7 +40,7 @@ class HmacAuth():
         :param secret, String, 指定密钥
         :param str_to_sign, String, 已拼装待签名的数据
         """
-        if sys.version_info.major > 2:
+        if self.python_version > 2:
             hmac_key = bytes(secret, "utf-8")
             msg_sign = bytes(str_to_sign, "utf-8")
 
@@ -72,7 +73,7 @@ class HmacAuth():
         gm_time = time.strftime("%a, %d %b %Y %H:%M:%S GMT", time.gmtime())
 
         # 拼装待签名的数据
-        str_to_sign = "date: {}\ndigest: {}".format(gm_time, body_digest)
+        str_to_sign = "date: {0}\ndigest: {1}".format(gm_time, body_digest)
 
         # 生成签名
         signature = self._hmac_sha256(hmac_secret, str_to_sign)
@@ -80,8 +81,9 @@ class HmacAuth():
         # 拼装headers
         headers = {}
         headers["Authorization"] = (
-            'hmac username="{}", algorithm="hmac-sha256", headers="date digest",'
-            'signature="{}"'.format(hmac_user, signature))
+            'hmac username="{0}", algorithm="hmac-sha256", headers="date digest",'
+            'signature="{1}"'.format(hmac_user, signature))
         headers["Digest"] = body_digest
         headers["Date"] = gm_time
         return headers
+
